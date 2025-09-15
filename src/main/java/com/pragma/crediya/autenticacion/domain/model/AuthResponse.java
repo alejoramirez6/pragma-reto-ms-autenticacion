@@ -5,22 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
-    private Long id;
-    private String nombres;
-    private String apellidos;
+public class AuthResponse {
+    private String token;
     private String documentoIdentidad;
-    private LocalDate fechaNacimiento;
-    private String direccion;
-    private String telefono;
     private String correoElectronico;
-    private Double salarioBase;
-    private String contrasena;
     private String rol;
 }

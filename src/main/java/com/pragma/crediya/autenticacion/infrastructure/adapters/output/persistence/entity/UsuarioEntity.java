@@ -17,6 +17,9 @@ public class UsuarioEntity {
     private String nombres;
     private String apellidos;
 
+    @Column("documento_identidad")
+    private String documentoIdentidad;
+
     @Column("fecha_nacimiento")
     private LocalDate fechaNacimiento;
 
@@ -28,4 +31,7 @@ public class UsuarioEntity {
 
     @Column("salario_base")
     private Double salarioBase;
+
+    private String contrasena;
+    private String rol;
 }

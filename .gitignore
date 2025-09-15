@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+docEstudioMsAutenticacion
 
 # BlueJ files
 *.ctxt
@@ -97,3 +98,6 @@ application-*.yml
 .env.development.local
 .env.test.local
 .env.production.local
+
+
+doc

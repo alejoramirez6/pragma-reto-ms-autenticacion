@@ -1,7 +1,12 @@
 package com.pragma.crediya.autenticacion.infrastructure.config;
 
+import com.pragma.crediya.autenticacion.domain.ports.in.IAuthServicePort;
 import com.pragma.crediya.autenticacion.domain.ports.in.IUsuarioServicePort;
+import com.pragma.crediya.autenticacion.domain.ports.out.IAuthorizationPort;
+import com.pragma.crediya.autenticacion.domain.ports.out.IJwtGateway;
+import com.pragma.crediya.autenticacion.domain.ports.out.IPasswordGateway;
 import com.pragma.crediya.autenticacion.domain.ports.out.IUsuarioRepositoryPort;
+import com.pragma.crediya.autenticacion.domain.usecase.AuthUseCase;
 import com.pragma.crediya.autenticacion.domain.usecase.UsuarioUseCase;
 import com.pragma.crediya.autenticacion.infrastructure.adapters.output.persistence.UsuarioPersistenceAdapter;
 import com.pragma.crediya.autenticacion.infrastructure.adapters.output.persistence.repository.IUsuarioRepository;
@@ -18,7 +23,12 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public IUsuarioServicePort usuarioServicePort(IUsuarioRepositoryPort usuarioRepositoryPort) {
-        return new UsuarioUseCase(usuarioRepositoryPort);
+    public IUsuarioServicePort usuarioServicePort(IUsuarioRepositoryPort usuarioRepositoryPort, IPasswordGateway passwordGateway, IAuthorizationPort authorizationPort) {
+        return new UsuarioUseCase(usuarioRepositoryPort, passwordGateway, authorizationPort);
+    }
+
+    @Bean
+    public IAuthServicePort authServicePort(IUsuarioRepositoryPort usuarioRepositoryPort, IPasswordGateway passwordGateway, IJwtGateway jwtGateway) {
+        return new AuthUseCase(usuarioRepositoryPort, passwordGateway, jwtGateway);
     }
 }

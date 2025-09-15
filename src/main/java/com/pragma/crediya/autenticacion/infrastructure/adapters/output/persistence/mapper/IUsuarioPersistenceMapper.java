@@ -5,9 +5,7 @@ import com.pragma.crediya.autenticacion.infrastructure.adapters.output.persisten
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring",
-        unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        unmappedSourcePolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring")
 public interface IUsuarioPersistenceMapper {
     UsuarioEntity toEntity(Usuario usuario);
     Usuario toUsuario(UsuarioEntity usuarioEntity);
